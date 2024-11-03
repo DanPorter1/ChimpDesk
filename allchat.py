@@ -16,7 +16,7 @@ avatarsd = Image.open("sda.jpg")
 # # Display the image
 # st.image(r"D:\Py\Work\ai\streamlit\chimp.jpg")
 with st.sidebar:
-    st.image(r"D:\Py\Work\ai\streamlit\chimp.jpg")
+    st.image("chimp.jpg")
     st.write("I'm here to help you with some tasks")
 # # Set the title
 
