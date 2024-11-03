@@ -11,8 +11,8 @@ api_key = st.secrets["GEMINI_API_KEY"]
 genai.configure()
 model = genai.GenerativeModel(model_name="gemini-1.5-flash")
 
-avatar = Image.open("Streamlit_app/chimp.jpg")
-avatarsd = Image.open("Streamlit_app/sda.jpg")
+avatar = Image.open("chimp.jpg")
+avatarsd = Image.open("sda.jpg")
 # # Display the image
 # st.image(r"D:\Py\Work\ai\streamlit\chimp.jpg")
 with st.sidebar:
