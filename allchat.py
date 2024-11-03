@@ -5,6 +5,7 @@ import random
 import time
 import os
 import google.generativeai as genai
+from PIL import Image
 
 api_key = st.secrets["GEMINI_API_KEY"]
 genai.configure()
