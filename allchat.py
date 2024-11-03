@@ -7,7 +7,7 @@ import os
 import google.generativeai as genai
 
 api_key = st.secrets["GEMINI_API_KEY"]
-genai.configure(api_key)
+genai.configure()
 model = genai.GenerativeModel(model_name="gemini-1.5-flash")
 
 avatar = r"D:\Py\Work\ai\streamlit\chimp.jpg"
