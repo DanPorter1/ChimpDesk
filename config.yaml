@@ -10,7 +10,7 @@ credentials:
       logged_in: False # Will be managed automatically
       name: Daniel Porter
       password: cegedim_181 # Will be hashed automatically
-      roles: admin
+      roles:
       - admin
       - editor
       - viewer
