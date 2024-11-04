@@ -105,7 +105,7 @@ with st.sidebar:
     """)
 # # Set the title
 
-st.title("Chimpanze Service Desk")
+st.title("Chimpanzee Service Desk")
 
 # Initialize chat history
 if "messages" not in st.session_state:
