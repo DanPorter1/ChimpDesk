@@ -12,10 +12,7 @@ import streamlit_authenticator as stauth
 
 with open('config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
-
-# Pre-hashing all plain text passwords once
-# stauth.Hasher.hash_passwords(config['credentials'])
-
+stauth.Hasher.hash_passwords(config['credentials'])
 authenticator = stauth.Authenticate(
     config['credentials'],
     config['cookie']['name'],
