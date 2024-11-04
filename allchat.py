@@ -95,6 +95,14 @@ def hscn(sdprompt):
 with st.sidebar:
     st.image("chimp.jpg")
     st.write("I'm here to help you with some tasks")
+    st.write("====================")
+    st.markdown("""
+    Functions - Start you message with keyword 
+    Email - Responds to email 
+    SD - Service Desk Ticket
+    HSCN - Internet issues 
+    Printer - Printer related Issues
+    """)
 # # Set the title
 
 st.title("Chimpanze Service Desk")
@@ -119,9 +127,16 @@ if prompt := st.chat_input("Enter your message... "):
     with st.chat_message("assistant", avatar=avatar):
         # Logic for respose
         if any(word in prompt.lower() for word in ["email", "mail"]):
-            response = st.write(email(prompt))
+            response = email(prompt)
+            st.write(response)
         elif any(word in prompt.lower() for word in ["sd"]):
             response = sd(prompt)
+            st.write(response)
+        elif any(word in prompt.lower() for word in ["hscn"]):
+            response = hscn(prompt)
+            st.write(response)
+        elif any(word in prompt.lower() for word in ["printer"]):
+            response = hscn(prompt)
             st.write(response)
         else:
             response = "Sorry I didn't understand that"
