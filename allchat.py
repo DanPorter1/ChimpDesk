@@ -23,16 +23,6 @@ authenticator = stauth.Authenticate(
     config['cookie']['expiry_days']
 )
 
-authenticator.login()
-if st.session_state['authentication_status']:
-    authenticator.logout()
-    st.write(f'Welcome *{st.session_state["name"]}*')
-    st.title('Some content')
-elif st.session_state['authentication_status'] is False:
-    st.error('Username/password is incorrect')
-elif st.session_state['authentication_status'] is None:
-    st.warning('Please enter your username and password')
-
 api_key = st.secrets["GEMINI_API_KEY"]
 genai.configure()
 model = genai.GenerativeModel(model_name="gemini-1.5-flash")
@@ -131,9 +121,29 @@ with st.sidebar:
       - Printer: Printer-related Issues
     """)
 # # Set the title
-
+authenticator.login()
+if st.session_state['authentication_status']:
+    authenticator.logout()
+    st.write(f'Welcome *{st.session_state["name"]}*')
+    st.title('Some content')
+elif st.session_state['authentication_status'] is False:
+    st.error('Username/password is incorrect')
+elif st.session_state['authentication_status'] is None:
+    st.warning('Please enter your username and password')
+    
 st.title("Chimpanzee Service Desk")
 
+with st.sidebar:
+    st.image("chimp.jpg")
+    st.write("I'm here to help you with some tasks")
+    st.write("====================")
+    st.markdown("""
+      Functions - Start your message with these keywords:
+      - Email: Responds to email
+      - SD: Service Desk Ticket
+      - HSCN: Internet issues
+      - Printer: Printer-related Issues
+    """)
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -171,3 +181,8 @@ if prompt := st.chat_input("Enter your message... "):
             #response = st.write_stream(response_generator())
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response, "avatar": avatar})
+elif st.session_state['authentication_status'] is False:
+    st.error('Username/password is incorrect')
+elif st.session_state['authentication_status'] is None:
+    st.warning('Please enter your username and password')
+st.title("Chimpanzee Service Desk")
