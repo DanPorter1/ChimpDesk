@@ -117,17 +117,6 @@ if st.session_state['authentication_status']:
 
     
     st.title("Chimpanzee Service Desk")
-    with st.sidebar:
-    st.image("chimp.jpg")
-    st.write("I'm here to help you with some tasks")
-    st.write("====================")
-    st.markdown("""
-      Functions - Start your message with these keywords:
-      - Email: Responds to email
-      - SD: Service Desk Ticket
-      - HSCN: Internet issues
-      - Printer: Printer-related Issues
-    """)
 
     with st.sidebar:
         st.image("chimp.jpg")
