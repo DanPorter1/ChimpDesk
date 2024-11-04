@@ -28,7 +28,7 @@ def response_generator():
         time.sleep(0.05)
 
 def email(emailprompt):
-    signiture = "\n\nDaniel"
+    # signiture = "\n\nDaniel"
     template = """
         
         You are a helpful assistant that drafts an email reply based on an a new email.
@@ -39,7 +39,8 @@ def email(emailprompt):
         
         Make sure to sign of with {}.
         
-        """.format(signiture)
+        """
+    # .format(signiture)
     
     message = template + emailprompt
     response = model.generate_content(message)
