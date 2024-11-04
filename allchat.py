@@ -120,6 +120,8 @@ if prompt := st.chat_input("Enter your message... "):
         # Logic for respose
         if any(word in prompt.lower() for word in ["email", "mail"]):
             response = st.write(email(prompt))
+        elif any(word in prompt.lower() for word in ["sd"]):
+            response = st.write(sd(prompt))
         else:
             response = "Sorry I didn't understand that"
             st.write(response)
