@@ -170,3 +170,5 @@ elif st.session_state['authentication_status'] is False:
     st.error('Username/password is incorrect')
 elif st.session_state['authentication_status'] is None:
     st.warning('Please enter your username and password')
+    st.title("Chimpanzee Service Desk --- Log in to free the Chimp")
+    
