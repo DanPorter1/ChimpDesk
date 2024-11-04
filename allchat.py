@@ -97,11 +97,11 @@ with st.sidebar:
     st.write("I'm here to help you with some tasks")
     st.write("====================")
     st.markdown("""
-    Functions - Start you message with keyword 
-    Email - Responds to email 
-    SD - Service Desk Ticket
-    HSCN - Internet issues 
-    Printer - Printer related Issues
+      Functions - Start your message with these keywords:
+      - Email: Responds to email
+      - SD: Service Desk Ticket
+      - HSCN: Internet issues
+      - Printer: Printer-related Issues
     """)
 # # Set the title
 
