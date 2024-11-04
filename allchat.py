@@ -109,7 +109,15 @@ def hscn(sdprompt):
     response = model.generate_content(message)
     return response.text
 
-with st.sidebar:
+# # Set the title
+authenticator.login()
+if st.session_state['authentication_status']:
+    authenticator.logout()
+    st.write(f'Welcome *{st.session_state["name"]}*')
+
+    
+    st.title("Chimpanzee Service Desk")
+    with st.sidebar:
     st.image("chimp.jpg")
     st.write("I'm here to help you with some tasks")
     st.write("====================")
@@ -120,14 +128,6 @@ with st.sidebar:
       - HSCN: Internet issues
       - Printer: Printer-related Issues
     """)
-# # Set the title
-authenticator.login()
-if st.session_state['authentication_status']:
-    authenticator.logout()
-    st.write(f'Welcome *{st.session_state["name"]}*')
-
-    
-    st.title("Chimpanzee Service Desk")
 
     with st.sidebar:
         st.image("chimp.jpg")
