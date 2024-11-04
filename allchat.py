@@ -125,62 +125,58 @@ authenticator.login()
 if st.session_state['authentication_status']:
     authenticator.logout()
     st.write(f'Welcome *{st.session_state["name"]}*')
-    st.title('Some content')
-elif st.session_state['authentication_status'] is False:
-    st.error('Username/password is incorrect')
-elif st.session_state['authentication_status'] is None:
-    st.warning('Please enter your username and password')
-    
-st.title("Chimpanzee Service Desk")
 
-with st.sidebar:
-    st.image("chimp.jpg")
-    st.write("I'm here to help you with some tasks")
-    st.write("====================")
-    st.markdown("""
-      Functions - Start your message with these keywords:
-      - Email: Responds to email
-      - SD: Service Desk Ticket
-      - HSCN: Internet issues
-      - Printer: Printer-related Issues
-    """)
+    
+    st.title("Chimpanzee Service Desk")
+
+    with st.sidebar:
+        st.image("chimp.jpg")
+        st.write("I'm here to help you with some tasks")
+        st.write("====================")
+        st.markdown("""
+          Functions - Start your message with these keywords:
+          - Email: Responds to email
+          - SD: Service Desk Ticket
+          - HSCN: Internet issues
+          - Printer: Printer-related Issues
+        """)
 # Initialize chat history
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
 
 # Display chat messages from history on app rerun
-for message in st.session_state.messages:
-    with st.chat_message(message["role"], avatar=message["avatarsd"] if message["role"] == "user" else message["avatar"] if message["role"] == "assistant" else None):
-        st.markdown(message["content"])
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"], avatar=message["avatarsd"] if message["role"] == "user" else message["avatar"] if message["role"] == "assistant" else None):
+            st.markdown(message["content"])
 
 # Accept user input
-if prompt := st.chat_input("Enter your message... "):
-    # Add user message to chat history
-    st.session_state.messages.append({"role": "user", "content": prompt, "avatarsd": avatarsd})
-    # Display user message in chat message container
-    with st.chat_message("user", avatar=avatarsd):
-        st.markdown(prompt)
-    # Display assistant response in chat message container
-    with st.chat_message("assistant", avatar=avatar):
-        # Logic for respose
-        if any(word in prompt.lower() for word in ["email", "mail"]):
-            response = email(prompt)
-            st.write(response)
-        elif any(word in prompt.lower() for word in ["sd"]):
-            response = sd(prompt)
-            st.write(response)
-        elif any(word in prompt.lower() for word in ["hscn"]):
-            response = hscn(prompt)
-            st.write(response)
-        elif any(word in prompt.lower() for word in ["printer"]):
-            response = hscn(prompt)
-            st.write(response)
-        else:
-            response = "Sorry I didn't understand that"
-            st.write(response)
-            #response = st.write_stream(response_generator())
-    # Add assistant response to chat history
-    st.session_state.messages.append({"role": "assistant", "content": response, "avatar": avatar})
+    if prompt := st.chat_input("Enter your message... "):
+        # Add user message to chat history
+        st.session_state.messages.append({"role": "user", "content": prompt, "avatarsd": avatarsd})
+        # Display user message in chat message container
+        with st.chat_message("user", avatar=avatarsd):
+            st.markdown(prompt)
+        # Display assistant response in chat message container
+        with st.chat_message("assistant", avatar=avatar):
+            # Logic for respose
+            if any(word in prompt.lower() for word in ["email", "mail"]):
+                response = email(prompt)
+                st.write(response)
+            elif any(word in prompt.lower() for word in ["sd"]):
+                response = sd(prompt)
+                st.write(response)
+            elif any(word in prompt.lower() for word in ["hscn"]):
+                response = hscn(prompt)
+                st.write(response)
+            elif any(word in prompt.lower() for word in ["printer"]):
+                response = hscn(prompt)
+                st.write(response)
+            else:
+                response = "Sorry I didn't understand that"
+                st.write(response)
+                #response = st.write_stream(response_generator())
+        # Add assistant response to chat history
+        st.session_state.messages.append({"role": "assistant", "content": response, "avatar": avatar})
 elif st.session_state['authentication_status'] is False:
     st.error('Username/password is incorrect')
 elif st.session_state['authentication_status'] is None:
