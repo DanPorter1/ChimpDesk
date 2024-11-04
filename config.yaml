@@ -1,6 +1,6 @@
 cookie:
   expiry_days: 1
-  key: some_signature_key_hello_world # Must be a string
+  key: some_signature_key_hello_world234234jskfskfs_po(ewer%^%$$___bin # Must be a string
   name: cookie_monster_name_is_chris
 credentials: 
   usernames:
