@@ -163,21 +163,21 @@ if st.session_state['authentication_status']:
         # Display assistant response in chat message container
         with st.chat_message("assistant", avatar=avatar):
             # Logic for respose
-        keyword_functions = {
-            "email": email,
-            "wemail": wemail
-            "mail": email,
-            "sd": sd,
-            "hscn": hscn,
-            "printer": hscn
-        }
-        
-        # Logic for response
-        response = "Sorry I didn't understand that"
-        for keyword, func in keyword_functions.items():
-            if any(word in prompt.lower() for word in [keyword]):
-                response = func(prompt)
-                break
+    keyword_functions = {
+        "email": email,
+        "wemail": wemail
+        "mail": email,
+        "sd": sd,
+        "hscn": hscn,
+        "printer": hscn
+    }
+    
+    # Logic for response
+    response = "Sorry I didn't understand that"
+    for keyword, func in keyword_functions.items():
+        if any(word in prompt.lower() for word in [keyword]):
+            response = func(prompt)
+            break
     
         st.write(response)
                 #response = st.write_stream(response_generator())
