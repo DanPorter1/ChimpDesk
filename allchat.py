@@ -165,7 +165,7 @@ if st.session_state['authentication_status']:
             # Logic for respose
             keyword_functions = {
                 "email": email,
-                "wemail": wemail
+                "wemail": wemail,
                 "sd": sd,
                 "hscn": hscn,
                 "printer": hscn
