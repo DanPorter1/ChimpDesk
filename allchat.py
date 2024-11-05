@@ -146,10 +146,12 @@ if st.session_state['authentication_status']:
         st.write("====================")
         st.markdown("""
           Functions - Start your message with these keywords:
-          - Email: Responds to email
           - SD: Service Desk Ticket
+          - Email: Responds to email
+          - Wemail: Writes email
           - HSCN: Internet issues
           - Printer: Printer-related Issues
+          - Howto: Writes how-to document
         """)
 # Initialize chat history
     if "messages" not in st.session_state:
