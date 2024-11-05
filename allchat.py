@@ -174,7 +174,7 @@ if st.session_state['authentication_status']:
             # Logic for response
             response = "Sorry I didn't understand that"
             for keyword, func in keyword_functions.items():
-                if any(word in prompt.lower() for word in [keyword]):
+                if prompt.lower().startswith(keyword):
                     response = func(prompt)
                     break
     
