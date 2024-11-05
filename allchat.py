@@ -118,6 +118,18 @@ def hscn(sdprompt):
     response = model.generate_content(message)
     return response.text
 
+def howto(sdprompt):
+    template = """
+        
+        You are a document writer on a how to guide, expalining the techincal terms in a manner anyone can understand. 
+        Customers should be able to follow these instructions clearly without needing to ask more questions. 
+        This should be presentable and descriptive. 
+        """
+    
+    message = template + sdprompt
+    response = model.generate_content(message)
+    return response.text
+
 # # Set the title
 authenticator.login()
 if st.session_state['authentication_status']:
@@ -162,7 +174,8 @@ if st.session_state['authentication_status']:
                 "wemail": wemail,
                 "sd": sd,
                 "hscn": hscn,
-                "printer": hscn
+                "printer": printer,
+                "howto": howto
             }
             
             # Logic for response
