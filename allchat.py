@@ -50,8 +50,6 @@ def email(emailprompt):
         
         Keep your reply short and to the point and mimic the style of the email so you reply in a similar manner to match the tone.
         
-        Make sure to sign of with {}.
-        
         """
     # .format(signiture)
     
@@ -62,14 +60,10 @@ def email(emailprompt):
 def wemail(emailprompt):
     # signiture = "\n\nDaniel"
     template = """
-        
         You are a helpful assistant that drafts an email.
         
         You goal is help the user quickly create a perfect email written professionally.
         Keep your reply short and to the point containing the nessessary information. 
-        
-        Make sure to sign of with {}.
-        
         """
     # .format(signiture)
     
