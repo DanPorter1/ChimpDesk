@@ -166,7 +166,6 @@ if st.session_state['authentication_status']:
             keyword_functions = {
                 "email": email,
                 "wemail": wemail
-                "mail": email,
                 "sd": sd,
                 "hscn": hscn,
                 "printer": hscn
