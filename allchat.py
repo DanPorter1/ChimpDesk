@@ -13,7 +13,7 @@ import streamlit_authenticator as stauth
 with open('config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
-st.set_page_config(page_title="My Tab Title")
+st.set_page_config(page_title="Chimp Service Desk")
 authenticator = stauth.Authenticate(
     config['credentials'],
     config['cookie']['name'],
