@@ -59,6 +59,24 @@ def email(emailprompt):
     response = model.generate_content(message)
     return response.text
 
+def wemail(emailprompt):
+    # signiture = "\n\nDaniel"
+    template = """
+        
+        You are a helpful assistant that drafts an email.
+        
+        You goal is help the user quickly create a perfect email written professionally.
+        Keep your reply short and to the point containing the nessessary information. 
+        
+        Make sure to sign of with {}.
+        
+        """
+    # .format(signiture)
+    
+    message = template + emailprompt
+    response = model.generate_content(message)
+    return response.text
+
 def sd(sdprompt):
     template = """
         
@@ -145,21 +163,23 @@ if st.session_state['authentication_status']:
         # Display assistant response in chat message container
         with st.chat_message("assistant", avatar=avatar):
             # Logic for respose
-            if any(word in prompt.lower() for word in ["email", "mail"]):
-                response = email(prompt)
-                st.write(response)
-            elif any(word in prompt.lower() for word in ["sd"]):
-                response = sd(prompt)
-                st.write(response)
-            elif any(word in prompt.lower() for word in ["hscn"]):
-                response = hscn(prompt)
-                st.write(response)
-            elif any(word in prompt.lower() for word in ["printer"]):
-                response = hscn(prompt)
-                st.write(response)
-            else:
-                response = "Sorry I didn't understand that"
-                st.write(response)
+        keyword_functions = {
+            "email": email,
+            "wemail": wemail
+            "mail": email,
+            "sd": sd,
+            "hscn": hscn,
+            "printer": hscn
+        }
+        
+        # Logic for response
+        response = "Sorry I didn't understand that"
+        for keyword, func in keyword_functions.items():
+            if any(word in prompt.lower() for word in [keyword]):
+                response = func(prompt)
+                break
+    
+        st.write(response)
                 #response = st.write_stream(response_generator())
         # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": response, "avatar": avatar})
