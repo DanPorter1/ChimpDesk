@@ -134,7 +134,6 @@ def howto(sdprompt):
 # # Set the title
 authenticator.login()
 if st.session_state['authentication_status']:
-    authenticator.logout()
     st.write(f'Welcome *{st.session_state["name"]}*')
 
     
@@ -192,6 +191,7 @@ if st.session_state['authentication_status']:
                 #response = st.write_stream(response_generator())
         # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": response, "avatar": avatar})
+        authenticator.logout()
 elif st.session_state['authentication_status'] is False:
     st.error('Username/password is incorrect')
 elif st.session_state['authentication_status'] is None:
