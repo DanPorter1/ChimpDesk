@@ -88,6 +88,23 @@ def sd(sdprompt):
     response = model.generate_content(message)
     return response.text
 
+def story(sdprompt):
+    template = """
+        
+        You are a helpful assistant that assists with logging tickets for a service desk.
+        I just need a description of the probem/incident as logged from a service desk anaylist after speaking to a customer. 
+        Make this as detialed as possible with bullet points so its easier to read. 
+        Don't request further information. 
+        Check this website for suggestions https://help.cegedim-healthcare.co.uk/Pharmacymanager/Content/Home.htm
+        Can you make this into a fantasy story with some fictional characters. 
+        Add 2 or 3 lines of your choice of fantasy 
+        Issue: 
+        """
+    
+    message = template + sdprompt
+    response = model.generate_content(message)
+    return response.text
+
 def printer(sdprompt):
     template = """
         
