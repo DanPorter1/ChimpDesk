@@ -77,7 +77,7 @@ def sd(sdprompt):
         
         You are a helpful assistant that assists with logging tickets for a service desk.
         I just need a description of the probem/incident as logged from a service desk anaylist after speaking to a customer. 
-        Support desk is for Pharmacies processing prescriptions. 
+        Make this as detialed as possible with bullet points so its easier to read. 
         Don't request further information. 
         Check this website for suggestions https://help.cegedim-healthcare.co.uk/Pharmacymanager/Content/Home.htm
         Can you also make 3 quick suggestions on what may be the cause?
