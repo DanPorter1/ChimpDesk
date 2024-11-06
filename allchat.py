@@ -152,7 +152,7 @@ if st.session_state['authentication_status']:
           - Printer: Printer-related Issues
           - Howto: Writes how-to document
         """)
-         authenticator.logout()
+        authenticator.logout()
 # Initialize chat history
     if "messages" not in st.session_state:
         st.session_state.messages = []
