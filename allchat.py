@@ -195,7 +195,8 @@ if st.session_state['authentication_status']:
                 "sd": sd,
                 "hscn": hscn,
                 "printer": printer,
-                "howto": howto
+                "howto": howto,
+                "story": story
             }
             
             # Logic for response
