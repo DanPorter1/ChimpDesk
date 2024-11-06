@@ -97,7 +97,7 @@ def story(sdprompt):
         Don't request further information. 
         Check this website for suggestions https://help.cegedim-healthcare.co.uk/Pharmacymanager/Content/Home.htm
         Can you make this into a fantasy story with some fictional characters. 
-        Add 2 or 3 lines of your choice of fantasy 
+        Add 2 or 3 lines of your choice of fantasy with suggesting a way to resolve the issue. 
         Issue: 
         """
     
