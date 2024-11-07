@@ -1,3 +1,5 @@
+import streamlit as st 
+
 def internet_issue():
     """Simulates the troubleshooting flowchart for internet issues."""
 
