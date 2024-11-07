@@ -1,4 +1,4 @@
-from allchat import *
+from allchat import model
 
 def response_generator():
     response = random.choice(
