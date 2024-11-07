@@ -1,3 +1,5 @@
+from allchat import *
+
 def response_generator():
     response = random.choice(
         [
