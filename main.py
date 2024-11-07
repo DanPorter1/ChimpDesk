@@ -1,4 +1,3 @@
-# streamlit run d:/Py/Work/ai/streamlit/streamchat.py
 import os
 import streamlit as st 
 import random 
@@ -22,8 +21,11 @@ authenticator = stauth.Authenticate(
     config['cookie']['key'],
     config['cookie']['expiry_days']
 )
-
-api_key = st.secrets["GEMINI_API_KEY"]
+##
+## TEMP - GEMINI_API_KEY="AIzaSyCB-4dPxlgELGpK22eaKfTwBf1OTQFjbuA"
+##
+api_key="AIzaSyCB-4dPxlgELGpK22eaKfTwBf1OTQFjbuA"
+#api_key = st.secrets["GEMINI_API_KEY"]
 genai.configure()
 model = genai.GenerativeModel(model_name="gemini-1.5-flash")
 

@@ -1,44 +1,36 @@
 cookie:
   expiry_days: 1
-  key: some_signature_key_hello_world234234jskfskfs_po(ewer%^%$$___bin # Must be a string
+  key: some_signature_key_hello_world234234jskfskfs_po(ewer%^%$$___bin
   name: cookie_monster_name_is_chris
-credentials: 
+credentials:
   usernames:
+    cegedim:
+      email: guest@guest.com
+      failed_login_attempts: 0
+      logged_in: false
+      name: Cegedim
+      password: $2b$12$ouL6FrX71ICp7UWbocESTO/n/diw/JOmE5nz4Gfi6vvlduS5b/qy.
+      roles:
+      - viewer
     dporter:
       email: daniel.porter@cegedimrx.co.uk
-      failed_login_attempts: 0 # Will be managed automatically
-      logged_in: False # Will be managed automatically
+      failed_login_attempts: 0
+      logged_in: true
       name: Daniel Porter
-      password: $2b$12$JqHlJBZd1w5s0iEYLPKczeYKfaM/i7qqRA.4NzqSfMJCa501zrlHm # Will be hashed automatically
+      password: $2b$12$JqHlJBZd1w5s0iEYLPKczeYKfaM/i7qqRA.4NzqSfMJCa501zrlHm
       roles:
       - admin
       - editor
       - viewer
-    cegedim:
-      email: guest@guest.com
-      failed_login_attempts: 0 # Will be managed automatically
-      logged_in: False # Will be managed automatically
-      name: Cegedim
-      password: $2b$12$ouL6FrX71ICp7UWbocESTO/n/diw/JOmE5nz4Gfi6vvlduS5b/qy. # Will be hashed automatically
-      roles:
-      - viewer
-    # Kieran:
-    #   email: Kieran@Fee
-    #   failed_login_attempts: 0 # Will be managed automatically
-    #   logged_in: False # Will be managed automatically
-    #   name: Kieran
-    #   password: test # Will be hashed automatically
-    #   roles:
-    #   - viewer
 oauth2:
-  google: # Follow instructions: https://developers.google.com/identity/protocols/oauth2
-    client_id: # To be filled
-    client_secret: # To be filled
-    redirect_uri: # URL to redirect to after OAuth2 authentication
-  microsoft: # Follow instructions: https://learn.microsoft.com/en-us/graph/auth-register-app-v2
-    client_id: # To be filled
-    client_secret: # To be filled
-    redirect_uri: # URL to redirect to after OAuth2 authentication
-    tenant_id: # To be filled
+  google:
+    client_id: null
+    client_secret: null
+    redirect_uri: null
+  microsoft:
+    client_id: null
+    client_secret: null
+    redirect_uri: null
+    tenant_id: null
 pre-authorized:
-  emails:
+  emails: null
