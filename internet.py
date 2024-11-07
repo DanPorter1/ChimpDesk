@@ -3,7 +3,7 @@ from main import st, Image
 avatar = Image.open("chimp.jpg")
 avatarsd = Image.open("sda.jpg")
 
-def internet():
+def internet(a):
     # Initial question
     prompt = "Does the customer have internet? (Yes/No):"
     st.chat_message("assistant", avatar=avatar, text=prompt)
