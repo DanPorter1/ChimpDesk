@@ -5,8 +5,10 @@ def ask_yes_no(question):
     answer = st.radio(question, ('Yes', 'No'))
     return answer == 'Yes'
 
-def run_troubleshooter():
+def internet():
     """Function to run the flowchart logic for router troubleshooting."""
+    st.title("Router Troubleshooter")
+
     has_internet = ask_yes_no("Does the Customer have internet?")
     
     if has_internet:
