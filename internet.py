@@ -8,10 +8,12 @@ def internet(a):
     prompt = "Does the customer have internet? (Yes/No):"
     with st.chat_message("assistant", avatar=avatar):
         st.write(prompt)
+        
     internet_status = st.chat_input("Enter your message... ")
         
     if internet_status.lower() == "yes":
         with st.chat_message("user", avatar=avatarsd):
             st.markdown(internet_status)
+            
         with st.chat_message("assistant", avatar=avatar):
             st.write("Other issue. Please escalate.")
