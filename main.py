@@ -83,7 +83,6 @@ if st.session_state['authentication_status']:
                 "howto": howto,
                 "story": story,
                 "dan": dan,
-                "internet": internet
             }
             
             # Logic for response
