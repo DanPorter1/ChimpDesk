@@ -10,6 +10,7 @@ import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 from prompts import *
+from internet import internet
 
 st.set_page_config(page_title="Chimp Service Desk")
 
