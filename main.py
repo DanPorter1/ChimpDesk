@@ -11,10 +11,11 @@ from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 from prompts import *
 
+st.set_page_config(page_title="Chimp Service Desk")
+
 with open('config.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 
-st.set_page_config(page_title="Chimp Service Desk")
 authenticator = stauth.Authenticate(
     config['credentials'],
     config['cookie']['name'],
