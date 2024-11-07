@@ -5,7 +5,7 @@ def ask_yes_no(question):
     answer = st.radio(question, ('Yes', 'No'))
     return answer == 'Yes'
 
-def internet():
+def troubleshoot_router():
     """Run the troubleshooting flow for the router."""
     st.title("Router Troubleshooter")
     
@@ -13,8 +13,8 @@ def internet():
     has_internet = ask_yes_no("Does the Customer have internet?")
     if has_internet:
         st.write("Issue: Other issue detected.")
-        return  # End here if there's another issue.
-
+        return  # End the function, issue detected elsewhere
+    
     # Step 2: Check router lights
     lights_on_router = ask_yes_no("Are the lights on the router?")
     
