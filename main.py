@@ -10,7 +10,6 @@ import yaml
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
 from prompts import *
-from internet import internet
 
 st.set_page_config(page_title="Chimp Service Desk")
 
@@ -91,9 +90,6 @@ if st.session_state['authentication_status']:
             response = "Sorry I didn't understand that"
             for keyword, func in keyword_functions.items():
                 if prompt.lower().startswith(keyword):
-                    if keyword == "internet":
-                        response = func()
-                    else:
                         response = func(prompt)
                     break
     
