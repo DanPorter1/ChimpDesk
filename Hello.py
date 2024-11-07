@@ -17,8 +17,6 @@ authenticator = stauth.Authenticate(
     config['cookie']['expiry_days']
 )
 
-## TEMP - GEMINI_API_KEY="AIzaSyCB-4dPxlgELGpK22eaKfTwBf1OTQFjbuA"
-
 st.title("""Welcome to Your AI-Powered Support Assistant""")
 st.write("""
 Effortlessly manage and resolve your technical issues with our AI-driven support assistant. Whether you’re experiencing internet problems or need help with basic troubleshooting, this app is designed to make support simpler and faster.
