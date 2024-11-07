@@ -22,14 +22,14 @@ credentials:
       password: $2b$12$ouL6FrX71ICp7UWbocESTO/n/diw/JOmE5nz4Gfi6vvlduS5b/qy. # Will be hashed automatically
       roles:
       - viewer
-    Kieran:
-      email: Kieran@Fee
-      failed_login_attempts: 0 # Will be managed automatically
-      logged_in: False # Will be managed automatically
-      name: Kieran
-      password: test # Will be hashed automatically
-      roles:
-      - viewer
+    # Kieran:
+    #   email: Kieran@Fee
+    #   failed_login_attempts: 0 # Will be managed automatically
+    #   logged_in: False # Will be managed automatically
+    #   name: Kieran
+    #   password: test # Will be hashed automatically
+    #   roles:
+    #   - viewer
 oauth2:
   google: # Follow instructions: https://developers.google.com/identity/protocols/oauth2
     client_id: # To be filled
