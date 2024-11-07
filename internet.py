@@ -1,13 +1,14 @@
-import streamlit as st 
+import streamlit as st
 
-def internet_issue():
-    """Simulates the troubleshooting flowchart for internet issues."""
-
+def troubleshoot_internet_issue(st):
     # Initial question
-    internet_status = input("Does the customer have internet? (Yes/No): ")
+    prompt = "Does the customer have internet? (Yes/No):"
+    st.chat_message("assistant", avatar="🤖", text=prompt)
+    internet_status = st.chat_input(placeholder="Enter your response")
 
     if internet_status.lower() == "yes":
-        print("Other issue. Please escalate.")
+        st.chat_message("user", avatar="👤", text=internet_status)
+        st.chat_message("assistant", avatar="🤖", text="Other issue. Please escalate.")
     else:
         router_lights = input("Are the lights on the router? (Yes/No): ")
 
