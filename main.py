@@ -91,7 +91,10 @@ if st.session_state['authentication_status']:
             response = "Sorry I didn't understand that"
             for keyword, func in keyword_functions.items():
                 if prompt.lower().startswith(keyword):
-                    response = func(prompt)
+                    if keyword == "internet"
+                        response = func()
+                    else:
+                        response = func(prompt)
                     break
     
         st.write(response)
