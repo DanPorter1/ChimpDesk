@@ -1,5 +1,11 @@
 import streamlit as st
 
+st.set_page_config(page_title="Internet Checking", page_icon="🌐")
+
+if not st.session_state.authentication_status:
+    st.info('Please Login from the Home page and try again.')
+    st.stop()
+
 # Define the questions and flow as a dictionary structure for easy navigation
 questions = {
     "1": {"text": "Does the Customer have internet?", "yes": "2", "no": "3"},

@@ -15,12 +15,20 @@ credentials:
     dporter:
       email: daniel.porter@cegedimrx.co.uk
       failed_login_attempts: 0
-      logged_in: true
+      logged_in: false
       name: Daniel Porter
       password: $2b$12$JqHlJBZd1w5s0iEYLPKczeYKfaM/i7qqRA.4NzqSfMJCa501zrlHm
       roles:
       - admin
       - editor
+      - viewer
+    josh:
+      email: josh@josh
+      failed_login_attempts: 0
+      logged_in: true
+      name: Josh
+      password: $2b$12$t.D6ZZ3d16JhreWypSRyOOII.r6Mbri5zs.NOExSzlznps8GuyYG6
+      roles:
       - viewer
 oauth2:
   google:
