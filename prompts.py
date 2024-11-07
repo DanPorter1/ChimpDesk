@@ -1,5 +1,9 @@
 from main import model
 
+def dan(sdprompt):
+    response = model.generate_content(sdrprompt)
+    return response.text
+
 def response_generator():
     response = random.choice(
         [
