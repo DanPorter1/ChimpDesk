@@ -1,137 +1,75 @@
 import streamlit as st
 
-def internet(prompt):
-    # Initialize session state variables if they don't exist
-    if "internet_step" not in st.session_state:
-        st.session_state.internet_step = 0  # Track which step of the conversation we are in
-        st.session_state.internet_responses = []  # Store responses
+def ask_yes_no(question):
+    """Ask a yes/no question and return True for 'Yes' and False for 'No'."""
+    answer = st.radio(question, ('Yes', 'No'))
+    return answer == 'Yes'
 
-    # Define the steps of the conversation
-    steps = [
-        {
-            "question": "Does the customer have internet? (Yes/No):",
-            "next_step": 1
-        },
-        {
-            "question": "Are the lights on the router? (Yes/No):",
-            "next_step": 2
-        },
-        {
-            "question": "Is the CD light on SOLID? (Yes/No):",
-            "next_step": 3
-        },
-        {
-            "question": "Can you ping the 'Default Gateway'? (Yes/No):",
-            "next_step": 4
-        },
-        {
-            "question": "Reboot the router and check again. Are the lights on now? (Yes/No):",
-            "next_step": 5
-        },
-        {
-            "question": "DSL Check router and OR Socket, Reboot Router, CD Light Solid? (Yes/No):",
-            "next_step": 6
-        }
-    ]
-
-    # Determine the current step based on session state
-    current_step = st.session_state.internet_step
-
-    if current_step == 0:
-        # First question (Does the customer have internet?)
-        st.chat_message("assistant", avatar="chimp.jpg").markdown(steps[current_step]["question"])
-        internet_status = st.chat_input("Enter your message... ")
-        
-        if internet_status.lower() == "yes":
-            st.session_state.internet_responses.append(internet_status)
-            st.session_state.internet_step = 1  # Proceed to the next step
-            st.chat_message("assistant", avatar="chimp.jpg").markdown("Other issue. Please escalate.")
+def run_troubleshooter():
+    """Function to run the flowchart logic for router troubleshooting."""
+    has_internet = ask_yes_no("Does the Customer have internet?")
+    
+    if has_internet:
+        st.write("Issue: Other issue detected.")
+        return  # End here if the internet is working but there's another issue.
+    
+    # If no internet, proceed with troubleshooting the router
+    lights_on_router = ask_yes_no("Are the lights on the router?")
+    
+    if lights_on_router:
+        cd_light_solid = ask_yes_no("Is the CD light on SOLID?")
+        if cd_light_solid:
+            can_ping_gateway = ask_yes_no("Can you ping the 'Default Gateway'?")
+            if can_ping_gateway:
+                st.write("Action: Escalate if there are still issues.")
+            else:
+                # Perform DSL check
+                dsl_check = ask_yes_no("DSL Check router and OR Socket, Reboot Router, CD Light Solid?")
+                if dsl_check:
+                    can_ping_gateway = ask_yes_no("Can you ping the 'Default Gateway'?")
+                    if can_ping_gateway:
+                        st.write("Action: Escalate if there are still issues.")
+                    else:
+                        st.write("Action: Raise to RC - Do they have a Failover?")
+                else:
+                    st.write("Action: Raise to RC - Do they have a Failover?")
         else:
-            st.session_state.internet_responses.append(internet_status)
-            st.session_state.internet_step = 1
-            st.chat_message("assistant", avatar="chimp.jpg").markdown("Let's check the router lights.")
-        return  # Avoid continuing the conversation
-
-    elif current_step == 1:
-        # Second question (Are the lights on the router?)
-        st.chat_message("assistant", avatar="chimp.jpg").markdown(steps[current_step]["question"])
-        router_lights = st.chat_input("Enter your message... ")
-        
-        if router_lights.lower() == "yes":
-            st.session_state.internet_responses.append(router_lights)
-            st.session_state.internet_step = 2  # Move to the next step
-            st.chat_message("assistant", avatar="chimp.jpg").markdown("Great! Let's check if the CD light is on SOLID.")
-        else:
-            st.session_state.internet_responses.append(router_lights)
-            st.session_state.internet_step = 1
-            st.chat_message("assistant", avatar="chimp.jpg").markdown("Try rebooting the router and check the lights again.")
-        return  # Avoid continuing the conversation
-
-    elif current_step == 2:
-        # Third question (Is the CD light on SOLID?)
-        st.chat_message("assistant", avatar="chimp.jpg").markdown(steps[current_step]["question"])
-        cd_light_status = st.chat_input("Enter your message... ")
-
-        if cd_light_status.lower() == "yes":
-            st.session_state.internet_responses.append(cd_light_status)
-            st.session_state.internet_step = 3  # Move to the next step
-            st.chat_message("assistant", avatar="chimp.jpg").markdown("Can you ping the 'Default Gateway'?")
-        else:
-            st.session_state.internet_responses.append(cd_light_status)
-            st.session_state.internet_step = 2
-            st.chat_message("assistant", avatar="chimp.jpg").markdown("Check your DSL connection, router, and OR socket. Reboot if needed.")
-        return  # Avoid continuing the conversation
-
-    elif current_step == 3:
-        # Fourth question (Can you ping the 'Default Gateway'?)
-        st.chat_message("assistant", avatar="chimp.jpg").markdown(steps[current_step]["question"])
-        ping_status = st.chat_input("Enter your message... ")
-
-        if ping_status.lower() == "yes":
-            st.session_state.internet_responses.append(ping_status)
-            st.session_state.internet_step = 4  # Proceed to the next step
-            st.chat_message("assistant", avatar="chimp.jpg").markdown("Escalate if there are still issues.")
-        else:
-            st.session_state.internet_responses.append(ping_status)
-            st.session_state.internet_step = 3
-            st.chat_message("assistant", avatar="chimp.jpg").markdown("Let's raise this to RC. Do you have a failover?")
-        return  # Avoid continuing the conversation
-
-    elif current_step == 4:
-        # Fifth question (Reboot router and check again)
-        st.chat_message("assistant", avatar="chimp.jpg").markdown(steps[current_step]["question"])
-        reboot_status = st.chat_input("Enter your message... ")
-
-        if reboot_status.lower() == "yes":
-            st.session_state.internet_responses.append(reboot_status)
-            st.session_state.internet_step = 5  # Move to the next step
-            st.chat_message("assistant", avatar="chimp.jpg").markdown("Great! Let's check the DSL connection.")
-        else:
-            st.session_state.internet_responses.append(reboot_status)
-            st.session_state.internet_step = 4
-            st.chat_message("assistant", avatar="chimp.jpg").markdown("Please reboot the router and check again.")
-        return  # Avoid continuing the conversation
-
-    elif current_step == 5:
-        # Sixth question (DSL check)
-        st.chat_message("assistant", avatar="chimp.jpg").markdown(steps[current_step]["question"])
-        dsl_check = st.chat_input("Enter your message... ")
-
-        if dsl_check.lower() == "yes":
-            st.session_state.internet_responses.append(dsl_check)
-            st.session_state.internet_step = 6  # Final step
-            st.chat_message("assistant", avatar="chimp.jpg").markdown("Escalate if issues persist.")
-        else:
-            st.session_state.internet_responses.append(dsl_check)
-            st.session_state.internet_step = 5
-            st.chat_message("assistant", avatar="chimp.jpg").markdown("Please check your DSL connection, reboot the router, and check the CD light again.")
-        return  # Avoid continuing the conversation
-
-    elif current_step == 6:
-        # End of the flow
-        st.session_state.internet_step = 0  # Reset the step for next interaction
-        st.chat_message("assistant", avatar="chimp.jpg").markdown("Thank you! You've completed the troubleshooting steps.")
-        return  # End the conversation
-
+            # Reboot router and check lights
+            reboot_router = ask_yes_no("Reboot router. Are the lights now on?")
+            if reboot_router:
+                can_ping_gateway = ask_yes_no("Can you ping the 'Default Gateway'?")
+                if can_ping_gateway:
+                    st.write("Action: Escalate if there are still issues.")
+                else:
+                    # Perform DSL check
+                    dsl_check = ask_yes_no("DSL Check router and OR Socket, Reboot Router, CD Light Solid?")
+                    if dsl_check:
+                        can_ping_gateway = ask_yes_no("Can you ping the 'Default Gateway'?")
+                        if can_ping_gateway:
+                            st.write("Action: Escalate if there are still issues.")
+                        else:
+                            st.write("Action: Raise to RC - Do they have a Failover?")
+                    else:
+                        st.write("Action: Raise to RC - Do they have a Failover?")
     else:
-        return "Sorry, something went wrong. Please try again."
+        # If lights aren't on, ask for reboot
+        reboot_router = ask_yes_no("Reboot router. Are the lights now on?")
+        if reboot_router:
+            cd_light_solid = ask_yes_no("Is the CD light on SOLID?")
+            if cd_light_solid:
+                can_ping_gateway = ask_yes_no("Can you ping the 'Default Gateway'?")
+                if can_ping_gateway:
+                    st.write("Action: Escalate if there are still issues.")
+                else:
+                    # Perform DSL check
+                    dsl_check = ask_yes_no("DSL Check router and OR Socket, Reboot Router, CD Light Solid?")
+                    if dsl_check:
+                        can_ping_gateway = ask_yes_no("Can you ping the 'Default Gateway'?")
+                        if can_ping_gateway:
+                            st.write("Action: Escalate if there are still issues.")
+                        else:
+                            st.write("Action: Raise to RC - Do they have a Failover?")
+                    else:
+                        st.write("Action: Raise to RC - Do they have a Failover?")
+        else:
+            st.write("Action: Raise to RC - Do they have a Failover?")
