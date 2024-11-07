@@ -6,6 +6,7 @@ avatarsd = Image.open("sda.jpg")
 def internet(a):
     # Initial question
     prompt = "Does the customer have internet? (Yes/No):"
+    
     with st.chat_message("assistant", avatar=avatar):
         st.write(prompt)
         
