@@ -9,12 +9,13 @@ def internet(a):
     
     with st.chat_message("assistant", avatar=avatar):
         st.write(prompt)
-        
+    
     internet_status = st.chat_input("Enter your message... ")
-        
+    
     if internet_status.lower() == "yes":
         with st.chat_message("user", avatar=avatarsd):
             st.markdown(internet_status)
-            
-        with st.chat_message("assistant", avatar=avatar):
-            st.write("Other issue. Please escalate.")
+    
+    # Move this outside the previous chat message block
+    with st.chat_message("assistant", avatar=avatar):
+        st.write("Other issue. Please escalate.")
