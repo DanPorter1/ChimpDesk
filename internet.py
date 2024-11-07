@@ -1,57 +1,72 @@
-import streamlit as st
+from main import st, avatar, avatarsd
 
 def troubleshoot_internet_issue(st):
     # Initial question
     prompt = "Does the customer have internet? (Yes/No):"
-    st.chat_message("assistant", avatar="🤖", text=prompt)
+    st.chat_message("assistant", avatar=avatar), text=prompt)
     internet_status = st.chat_input(placeholder="Enter your response")
 
     if internet_status.lower() == "yes":
-        st.chat_message("user", avatar="👤", text=internet_status)
-        st.chat_message("assistant", avatar="🤖", text="Other issue. Please escalate.")
+        st.chat_message("user", avatar=avatarsd, text=internet_status)
+        st.chat_message("assistant", avatar=avatar), text="Other issue. Please escalate.")
     else:
-        router_lights = input("Are the lights on the router? (Yes/No): ")
-
+        # Router lights check
+        router_lights = st.chat_input("Are the lights on the router? (Yes/No):")
         if router_lights.lower() == "yes":
-            cd_light_status = input("Is the CD light on SOLID? (Yes/No): ")
+            # CD light check
+            cd_light_status = st.chat_input("Is the CD light on SOLID? (Yes/No):")
             if cd_light_status.lower() == "yes":
-                ping_status = input("Can you ping the 'Default Gateway'? (Yes/No): ")
+                # Ping check
+                ping_status = st.chat_input("Can you ping the 'Default Gateway'? (Yes/No):")
                 if ping_status.lower() == "yes":
-                    print("Escalate if there are still issues.")
+                    st.chat_message("user", avatar=avatarsd, text=ping_status)
+                    st.chat_message("assistant", avatar=avatar), text="Escalate if there are still issues.")
                 else:
-                    print("Raise to RC - Do they have a Failover?")
+                    st.chat_message("user", avatar=avatarsd, text=ping_status)
+                    st.chat_message("assistant", avatar=avatar), text="Raise to RC - Do they have a Failover?")
             else:
-                dsl_check = input("DSL Check router and OR Socket, Reboot Router, CD Light Solid? (Yes/No): ")
+                # DSL check
+                dsl_check = st.chat_input("DSL Check router and OR Socket, Reboot Router, CD Light Solid? (Yes/No):")
                 if dsl_check.lower() == "yes":
-                    ping_status = input("Can you ping the 'Default Gateway'? (Yes/No): ")
+                    ping_status = st.chat_input("Can you ping the 'Default Gateway'? (Yes/No):")
                     if ping_status.lower() == "yes":
-                        print("Escalate if there are still issues.")
+                        st.chat_message("user", avatar=avatarsd, text=ping_status)
+                        st.chat_message("assistant", avatar=avatar), text="Escalate if there are still issues.")
                     else:
-                        print("Raise to RC - Do they have a Failover?")
+                        st.chat_message("user", avatar=avatarsd, text=ping_status)
+                        st.chat_message("assistant", avatar=avatar), text="Raise to RC - Do they have a Failover?")
                 else:
-                    print("Raise to RC - Do they have a Failover?")
+                    st.chat_message("user", avatar=avatarsd, text=dsl_check)
+                    st.chat_message("assistant", avatar=avatar), text="Raise to RC - Do they have a Failover?")
         else:
-            reboot_status = input("Reboot router are the lights now on? (Yes/No): ")
+            # Reboot router
+            reboot_status = st.chat_input("Reboot router are the lights now on? (Yes/No):")
             if reboot_status.lower() == "yes":
-                cd_light_status = input("Is the CD light on SOLID? (Yes/No): ")
+                # CD light check
+                cd_light_status = st.chat_input("Is the CD light on SOLID? (Yes/No):")
                 if cd_light_status.lower() == "yes":
-                    ping_status = input("Can you ping the 'Default Gateway'? (Yes/No): ")
+                    # Ping check
+                    ping_status = st.chat_input("Can you ping the 'Default Gateway'? (Yes/No):")
                     if ping_status.lower() == "yes":
-                        print("Escalate if there are still issues.")
+                        st.chat_message("user", avatar=avatarsd, text=ping_status)
+                        st.chat_message("assistant", avatar=avatar), text="Escalate if there are still issues.")
                     else:
-                        print("Raise to RC - Do they have a Failover?")
+                        st.chat_message("user", avatar=avatarsd, text=ping_status)
+                        st.chat_message("assistant", avatar=avatar), text="Raise to RC - Do they have a Failover?")
                 else:
-                    dsl_check = input("DSL Check router and OR Socket, Reboot Router, CD Light Solid? (Yes/No): ")
+                    # DSL check
+                    dsl_check = st.chat_input("DSL Check router and OR Socket, Reboot Router, CD Light Solid? (Yes/No):")
                     if dsl_check.lower() == "yes":
-                        ping_status = input("Can you ping the 'Default Gateway'? (Yes/No): ")
+                        ping_status = st.chat_input("Can you ping the 'Default Gateway'? (Yes/No):")
                         if ping_status.lower() == "yes":
-                            print("Escalate if there are still issues.")
+                            st.chat_message("user", avatar=avatarsd, text=ping_status)
+                            st.chat_message("assistant", avatar=avatar), text="Escalate if there are still issues.")
                         else:
-                            print("Raise to RC - Do they have a Failover?")
+                            st.chat_message("user", avatar=avatarsd, text=ping_status)
+                            st.chat_message("assistant", avatar=avatar), text="Raise to RC - Do they have a Failover?")
                     else:
-                        print("Raise to RC - Do they have a Failover?")
+                        st.chat_message("user", avatar=avatarsd, text=dsl_check)
+                        st.chat_message("assistant", avatar=avatar), text="Raise to RC - Do they have a Failover?")
             else:
-                print("Raise to RC - Do they have a Failover?")
-
-# Call the function to start the troubleshooting process
-troubleshoot_internet_issue()
+                st.chat_message("user", avatar=avatarsd, text=reboot_status)
+                st.chat_message("assistant", avatar=avatar), text="Raise to RC - Do they have a Failover?")
