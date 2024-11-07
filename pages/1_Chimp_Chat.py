@@ -31,6 +31,14 @@ with st.sidebar:
 if "messages" not in st.session_state:
         st.session_state.messages = []
 
+if len(st.session_state.messages) == 0:
+    st.session_state.messages.append({"role": "assistant", "content": """
+    Hello! 👋 I'm here to help you with ticket logging, troubleshooting internet issues, and answering any questions you may have.
+
+If you're experiencing a problem, let me know, and I’ll guide you through some quick troubleshooting steps. Need to log a support ticket instead? I can help with that too!
+
+Just type in your issue, and let's get started. 😊""", "avatar": avatar})
+    
 # Display chat messages from history on app rerun
 for message in st.session_state.messages:
     with st.chat_message(message["role"], avatar=message["avatarsd"] if message["role"] == "user" else message["avatar"] if message["role"] == "assistant" else None):
