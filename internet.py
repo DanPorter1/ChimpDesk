@@ -1,4 +1,7 @@
-from main import st, avatar, avatarsd
+from main import st, Image
+
+avatar = Image.open("chimp.jpg")
+avatarsd = Image.open("sda.jpg")
 
 def internet():
     # Initial question
