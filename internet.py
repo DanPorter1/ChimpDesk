@@ -5,7 +5,7 @@ def ask_yes_no(question):
     answer = st.radio(question, ('Yes', 'No'))
     return answer == 'Yes'
 
-def troubleshoot_router():
+def internet():
     """Run the troubleshooting flow for the router."""
     st.title("Router Troubleshooter")
     
