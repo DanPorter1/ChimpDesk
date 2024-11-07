@@ -1,6 +1,6 @@
 from main import st, avatar, avatarsd
 
-def troubleshoot_internet_issue():
+def internet():
     # Initial question
     prompt = "Does the customer have internet? (Yes/No):"
     st.chat_message("assistant", avatar=avatar), text=prompt)
