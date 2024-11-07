@@ -7,8 +7,8 @@ questions = {
     "3": {"text": "Are the lights on the router?", "yes": "4", "no": "5"},
     "4": {"text": "Is the CD light on SOLID?", "yes": "7", "no": "8"},
     "5": {"text": "Reboot router. Are the lights now on?", "yes": "4", "no": "6"},
-    "6": {"text": "Raise to RC - Do they have a Failover?", "end": True},
-    "7": {"text": "Can you ping the 'Default Gateway'?", "yes": "9", "end": True},
+    "6": {"text": "Raise to RC - Chaeck 4G", "end": True},
+    "7": {"text": "Can you ping the 'Default Gateway'?", "yes": "9", "no": "9"},
     "8": {"text": "DSL Check router and OR Socket, Reboot Router, CD Light Solid?", "yes": "7", "no": "6"},
     "9": {"text": "Escalate if there are still issues.", "end": True}
 }
@@ -42,7 +42,7 @@ if not question_data.get("end"):
         # Rerun to immediately go to the next question
         st.rerun()
 else:
-    st.info("This path has concluded. Please use the Reset button to start again.")
+    st.info("Troubleshooting concluded. Please use the Reset button to start again.")
 
 # Display the answer history
 st.subheader("History of Responses")
