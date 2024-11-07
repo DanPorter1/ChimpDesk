@@ -1,20 +1,14 @@
-from main import model
+import google.generativeai as genai
+import streamlit as st
+
+
+api_key = st.secrets["GEMINI_API_KEY"]
+genai.configure(api_key=api_key)
+model = genai.GenerativeModel(model_name="gemini-1.5-flash")
 
 def dan(prompt):
     response = model.generate_content(prompt)
     return response.text
-
-def response_generator():
-    response = random.choice(
-        [
-            "Hello there! How can I assist you today?",
-            "Hi, human! Is there anything I can help you with?",
-            "Do you need help?",
-        ]
-    )
-    for word in response.split():
-        yield word + " "
-        time.sleep(0.05)
 
 def email(emailprompt):
     # signiture = "\n\nDaniel"
