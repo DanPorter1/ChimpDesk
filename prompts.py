@@ -1,7 +1,7 @@
 from main import model
 
-def dan(sdprompt):
-    response = model.generate_content(sdrprompt)
+def dan(prompt):
+    response = model.generate_content(prompt)
     return response.text
 
 def response_generator():
@@ -33,7 +33,7 @@ def email(emailprompt):
     response = model.generate_content(message)
     return response.text
 
-def wemail(emailprompt):
+def wemail(wemailprompt):
     # signiture = "\n\nDaniel"
     template = """
         You are a helpful assistant that drafts an email.
@@ -43,7 +43,7 @@ def wemail(emailprompt):
         """
     # .format(signiture)
     
-    message = template + emailprompt
+    message = template + wemailprompt
     response = model.generate_content(message)
     return response.text
 
@@ -63,7 +63,7 @@ def sd(sdprompt):
     response = model.generate_content(message)
     return response.text
 
-def story(sdprompt):
+def story(storyprompt):
     template = """
         
         You are a helpful assistant that assists with logging tickets for a service desk.
@@ -76,11 +76,11 @@ def story(sdprompt):
         Issue: 
         """
     
-    message = template + sdprompt
+    message = template + storyprompt
     response = model.generate_content(message)
     return response.text
 
-def printer(sdprompt):
+def printer(printerprompt):
     template = """
         
         You are a helpful assistant that assists with logging tickets for a service desk.
@@ -91,11 +91,11 @@ def printer(sdprompt):
         Issue: 
         """
     
-    message = template + sdprompt
+    message = template + printerprompt
     response = model.generate_content(message)
     return response.text
 
-def hscn(sdprompt):
+def hscn(hscnprompt):
     template = """
         
         You are a helpful assistant that assists with troubleshooting internet issues mainly on a LAN connection. 
@@ -107,11 +107,11 @@ def hscn(sdprompt):
         Only give me Possible Causes and Troubleshooting Steps
         """
     
-    message = template + sdprompt
+    message = template + hscnprompt
     response = model.generate_content(message)
     return response.text
 
-def howto(sdprompt):
+def howto(howtoprompt):
     template = """
         
         You are a document writer on a how to guide, expalining the techincal terms in a manner anyone can understand. 
@@ -119,6 +119,6 @@ def howto(sdprompt):
         This should be presentable and descriptive. 
         """
     
-    message = template + sdprompt
+    message = template + howtoprompt
     response = model.generate_content(message)
     return response.text
