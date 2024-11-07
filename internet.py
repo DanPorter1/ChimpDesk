@@ -45,11 +45,12 @@ def internet(prompt):
         if internet_status.lower() == "yes":
             st.session_state.internet_responses.append(internet_status)
             st.session_state.internet_step = 1  # Proceed to the next step
-            return "Other issue. Please escalate."
+            st.chat_message("assistant", avatar="chimp.jpg").markdown("Other issue. Please escalate.")
         else:
             st.session_state.internet_responses.append(internet_status)
             st.session_state.internet_step = 1
-            return "Let's check the router lights."
+            st.chat_message("assistant", avatar="chimp.jpg").markdown("Let's check the router lights.")
+        return  # Avoid continuing the conversation
 
     elif current_step == 1:
         # Second question (Are the lights on the router?)
@@ -59,11 +60,12 @@ def internet(prompt):
         if router_lights.lower() == "yes":
             st.session_state.internet_responses.append(router_lights)
             st.session_state.internet_step = 2  # Move to the next step
-            return "Great! Let's check if the CD light is on SOLID."
+            st.chat_message("assistant", avatar="chimp.jpg").markdown("Great! Let's check if the CD light is on SOLID.")
         else:
             st.session_state.internet_responses.append(router_lights)
             st.session_state.internet_step = 1
-            return "Try rebooting the router and check the lights again."
+            st.chat_message("assistant", avatar="chimp.jpg").markdown("Try rebooting the router and check the lights again.")
+        return  # Avoid continuing the conversation
 
     elif current_step == 2:
         # Third question (Is the CD light on SOLID?)
@@ -73,11 +75,12 @@ def internet(prompt):
         if cd_light_status.lower() == "yes":
             st.session_state.internet_responses.append(cd_light_status)
             st.session_state.internet_step = 3  # Move to the next step
-            return "Can you ping the 'Default Gateway'?"
+            st.chat_message("assistant", avatar="chimp.jpg").markdown("Can you ping the 'Default Gateway'?")
         else:
             st.session_state.internet_responses.append(cd_light_status)
             st.session_state.internet_step = 2
-            return "Check your DSL connection, router, and OR socket. Reboot if needed."
+            st.chat_message("assistant", avatar="chimp.jpg").markdown("Check your DSL connection, router, and OR socket. Reboot if needed.")
+        return  # Avoid continuing the conversation
 
     elif current_step == 3:
         # Fourth question (Can you ping the 'Default Gateway'?)
@@ -87,11 +90,12 @@ def internet(prompt):
         if ping_status.lower() == "yes":
             st.session_state.internet_responses.append(ping_status)
             st.session_state.internet_step = 4  # Proceed to the next step
-            return "Escalate if there are still issues."
+            st.chat_message("assistant", avatar="chimp.jpg").markdown("Escalate if there are still issues.")
         else:
             st.session_state.internet_responses.append(ping_status)
             st.session_state.internet_step = 3
-            return "Let's raise this to RC. Do you have a failover?"
+            st.chat_message("assistant", avatar="chimp.jpg").markdown("Let's raise this to RC. Do you have a failover?")
+        return  # Avoid continuing the conversation
 
     elif current_step == 4:
         # Fifth question (Reboot router and check again)
@@ -101,11 +105,12 @@ def internet(prompt):
         if reboot_status.lower() == "yes":
             st.session_state.internet_responses.append(reboot_status)
             st.session_state.internet_step = 5  # Move to the next step
-            return "Great! Let's check the DSL connection."
+            st.chat_message("assistant", avatar="chimp.jpg").markdown("Great! Let's check the DSL connection.")
         else:
             st.session_state.internet_responses.append(reboot_status)
             st.session_state.internet_step = 4
-            return "Please reboot the router and check again."
+            st.chat_message("assistant", avatar="chimp.jpg").markdown("Please reboot the router and check again.")
+        return  # Avoid continuing the conversation
 
     elif current_step == 5:
         # Sixth question (DSL check)
@@ -115,16 +120,18 @@ def internet(prompt):
         if dsl_check.lower() == "yes":
             st.session_state.internet_responses.append(dsl_check)
             st.session_state.internet_step = 6  # Final step
-            return "Escalate if issues persist."
+            st.chat_message("assistant", avatar="chimp.jpg").markdown("Escalate if issues persist.")
         else:
             st.session_state.internet_responses.append(dsl_check)
             st.session_state.internet_step = 5
-            return "Please check your DSL connection, reboot the router, and check the CD light again."
+            st.chat_message("assistant", avatar="chimp.jpg").markdown("Please check your DSL connection, reboot the router, and check the CD light again.")
+        return  # Avoid continuing the conversation
 
     elif current_step == 6:
         # End of the flow
         st.session_state.internet_step = 0  # Reset the step for next interaction
-        return "Thank you! You've completed the troubleshooting steps."
+        st.chat_message("assistant", avatar="chimp.jpg").markdown("Thank you! You've completed the troubleshooting steps.")
+        return  # End the conversation
 
     else:
         return "Sorry, something went wrong. Please try again."
