@@ -39,6 +39,7 @@ authenticator.login('sidebar')
 if st.session_state['authentication_status']:
     with st.sidebar:
         st.title(f'Welcome *{st.session_state["name"]}*')
+        st.session_state.messages = []
         authenticator.logout()
 elif st.session_state['authentication_status'] is False:
     st.error('Username/password is incorrect')
