@@ -52,7 +52,6 @@ elif st.session_state['authentication_status'] is None:
             st.success('User registered successfully')
     except RegisterError as e:
         st.error(e)
-            st.error(e)
 #     st.warning('Please enter your username and password')
 # with open('config.yaml', 'w') as file:
 #     yaml.dump(config, file, default_flow_style=False)
