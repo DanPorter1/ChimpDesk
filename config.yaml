@@ -38,6 +38,10 @@ credentials:
       password: test
       roles:
       - viewer
+pre-authorized:
+    emails: 
+      - test@test.com
+      - 123@help.com
 oauth2:
   google:
     client_id: null
