@@ -44,6 +44,19 @@ if st.session_state['authentication_status']:
 elif st.session_state['authentication_status'] is False:
     st.error('Username/password is incorrect')
 elif st.session_state['authentication_status'] is None:
-    st.warning('Please enter your username and password')
-with open('config.yaml', 'w') as file:
-    yaml.dump(config, file, default_flow_style=False)
+    try:
+        email_of_registered_user, username_of_registered_user, name_of_registered_user = authenticator.register_user(
+                pre_authorized = config['pre-authorized'],
+                merge_username_email = True,
+                captcha = False,
+                clear_on_submit = False,
+                location = 'sidebar')
+        if email_of_registered_user:
+            with open('./config.yaml', 'w') as file:
+                yaml.dump(config, file, default_flow_style=False)
+                st.success('Registered successfully! Login to continue.')
+    except Exception as e:
+        st.error(e)
+#     st.warning('Please enter your username and password')
+# with open('config.yaml', 'w') as file:
+#     yaml.dump(config, file, default_flow_style=False)
