@@ -49,4 +49,4 @@ oauth2:
     redirect_uri: null
     tenant_id: null
 pre-authorized:
-  emails: null
+  emails: test@test.com
