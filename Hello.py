@@ -50,6 +50,8 @@ elif st.session_state['authentication_status'] is None:
          name_of_registered_user) = authenticator.register_user()
         if email_of_registered_user:
             st.success('User registered successfully')
+            with open('config.yaml', 'w') as file:
+                yaml.dump(config, file, default_flow_style=False)
     except Exception as e:
         st.error(e)
 #     st.warning('Please enter your username and password')
