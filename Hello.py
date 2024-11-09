@@ -44,6 +44,6 @@ if st.session_state['authentication_status']:
 elif st.session_state['authentication_status'] is False:
     st.error('Username/password is incorrect')
 elif st.session_state['authentication_status'] is None:
-    st.warning('Please log in to continue')
+    st.info('Please log in to continue')
 with open('config.yaml', 'w') as file:
     yaml.dump(config, file, default_flow_style=False)
