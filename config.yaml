@@ -49,4 +49,5 @@ oauth2:
     redirect_uri: null
     tenant_id: null
 pre-authorized:
-  emails: test@test.com
+  emails: 
+    - test@test.com
