@@ -38,10 +38,6 @@ credentials:
       password: test
       roles:
       - viewer
-pre-authorized:
-    emails: 
-      - test@test.com
-      - 123@help.com
 oauth2:
   google:
     client_id: null
@@ -53,4 +49,6 @@ oauth2:
     redirect_uri: null
     tenant_id: null
 pre-authorized:
-  emails: [test@test.com, 123@help.com]
+  emails:   
+    - test@test.com
+    - 123@help.com
